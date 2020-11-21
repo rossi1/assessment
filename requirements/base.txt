@@ -19,4 +19,5 @@ pandas==1.1.4 # https://pypi.org/project/pandas
 drf-yasg==1.16.1  # https://drf-yasg.readthedocs.io/en/stable/readme.html
 xlrd==1.2.0
 django-filter==2.2.0
+packaging==19.1
 
