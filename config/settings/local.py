@@ -23,6 +23,20 @@ CACHES = {
     }
 }
 
+# DATABASES
+# ------------------------------------------------------------------------------
+# https://docs.djangoproject.com/en/dev/ref/settings/#databases
+DATABASES = {
+    'default': {
+         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+         'NAME': env("DBNAME"),
+         'USER': env("DBUSER"),
+         'PASSWORD': env("DBPASSWORD"),
+         'HOST': env("DBHOST"),
+         'PORT': '5432',
+         }
+}
+
 # EMAIL
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-backend
