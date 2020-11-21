@@ -8,6 +8,7 @@ __pycache__/
 *.so
 
 # Distribution / packaging
+
 .Python
 build/
 develop-eggs/
@@ -51,7 +52,6 @@ coverage.xml
 *.pot
 
 # Django stuff:
-staticfiles/
 
 # Sphinx documentation
 docs/_build/
@@ -268,10 +268,15 @@ tags
 ### Project template
 
 assessement_test/media/
+staticfiles/
 
 .pytest_cache/
 
 
 .ipython/
-.env
-.envs/*
+.env
+
+.envs/*
+
+
+
