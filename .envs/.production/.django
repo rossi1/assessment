@@ -1,0 +1,27 @@
+# General
+# ------------------------------------------------------------------------------
+# DJANGO_READ_DOT_ENV_FILE=True
+DJANGO_SETTINGS_MODULE=config.settings.production
+DJANGO_SECRET_KEY=V0IlJzt57dbF5Er6FDQ306fPjPtFAwPRwR7h1aaviBFiR7kdWGSbxe9ob8uMMk7w
+DJANGO_ADMIN_URL=y4x7heoAESANFONtMCOEcYGg3qqXVcVn/
+DJANGO_ALLOWED_HOSTS=*
+
+# Security
+# ------------------------------------------------------------------------------
+# TIP: better off using DNS, however, redirect is OK too
+DJANGO_SECURE_SSL_REDIRECT=False
+
+# Email
+# ------------------------------------------------------------------------------
+DJANGO_SERVER_EMAIL=
+
+
+# Gunicorn
+# ------------------------------------------------------------------------------
+WEB_CONCURRENCY=4
+
+
+# Redis
+# ------------------------------------------------------------------------------
+REDIS_URL=redis://redis:6379/0
+
