@@ -35,7 +35,7 @@ class ChoicesSerializer(serializers.ModelSerializer):
             choice = Choices.objects.create(question=question, **validated_data)
             return choice
 
-  
+
 
 class QuestionSerializer(serializers.ModelSerializer):
     choices = ChoicesSerializer(many=True, required=False)
@@ -44,6 +44,10 @@ class QuestionSerializer(serializers.ModelSerializer):
         model = Question
         exclude = ("date_created",)
 
+    def validate_question(self, attrs):
+        if Question.objects.filter(question=attrs).exists():
+            raise serializers.ValidationError(_("question already exist"))
+        return attrs
 
     def create(self, validated_data):
         choices = validated_data.pop("choices", None)
