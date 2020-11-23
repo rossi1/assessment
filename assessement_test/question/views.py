@@ -16,7 +16,7 @@ from drf_yasg import openapi
 from .models import Question, Choices
 from .serializers import QuestionSerializer, ExcelSheetSerializer, ChoicesSerializer, QuestionResponseSerializer
 
-class QuestionCreateAPIView(generics.CreateAPIView):
+class QuestionBulkCreateAPIView(generics.CreateAPIView):
     permission_classes = (permissions.AllowAny,)
     queryset = Question
     serializer_class = ExcelSheetSerializer
@@ -29,7 +29,7 @@ class QuestionCreateAPIView(generics.CreateAPIView):
         request_body=ExcelSheetSerializer
     )
     def post(self, request, *args, **kwargs):
-        return super(QuestionCreateAPIView, self).post(request, *args, **kwargs)
+        return super(QuestionBulkCreateAPIView, self).post(request, *args, **kwargs)
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
@@ -96,6 +96,22 @@ class QuestionCreateAPIView(generics.CreateAPIView):
                         success.append(question_serializer.data)
             response_data = {"total_saved": amount_saved, "total_not_saved": amount_not_saved, "errors": failed, "sucess": success}
             return Response(response_data, status=status.HTTP_200_OK)
+
+
+class QuestionCreateAPIView(generics.CreateAPIView):
+    permission_classes = (permissions.AllowAny,)
+    queryset = Question
+    serializer_class = QuestionSerializer
+
+    @swagger_auto_schema(
+        responses={
+            '200': QuestionSerializer,
+            '400': QuestionSerializer,
+        },
+        request_body=QuestionSerializer
+    )
+    def post(self, request, *args, **kwargs):
+        return super(QuestionCreateAPIView, self).post(request, *args, **kwargs)
 
 
 class QuestionListAPIView(generics.ListAPIView):
